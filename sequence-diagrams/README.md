@@ -27,3 +27,6 @@
 
 ### Appointment booking
 See https://github.com/omahoito/oda-fhir-service/blob/master/docs/appointment-booking.md
+
+### Blood pressure measurement
+![](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/omahoito/definitions/master/sequence-diagrams/bloodpressure.plantuml?1) 
