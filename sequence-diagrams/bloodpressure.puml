@@ -1,6 +1,6 @@
 @startuml
 header
-Sequence diagram for first login
+Sequence diagram for blood pressure follow-up
 endheader
 
 participant ODA_WEB_UI
@@ -11,26 +11,26 @@ box "ODA 2" #LightBlue
     participant ODA_FHIR_API
 end box
 participant ODA_PHR
-participant SUOMIFI_IDP
-ODA_WEB_UI <-- ODA_WEB_UI: GET [oda-backend-base]/api/login
-ODA_WEB_UI -> SUOMIFI_IDP:  HTTP 302 Found [Redirect to Suomi.fi IDP]
-ODA_WEB_UI <-- SUOMIFI_IDP: Authenticate and return HETU from VRK
 
-ODA_WEB_UI -> ODA_FHIR_API: GET [oda-fhir-base]/Patient/$searchbynationalid?nationalid=HETU
-ODA_FHIR_API -> ODA_PHR: GET [oda-phr-base]/Person?identifier=HETU
-ODA_FHIR_API <-- ODA_PHR: HTTP 200 OK [Empty bundle - person not found]
-ODA_WEB_UI <-- ODA_FHIR_API: HTTP 200 OK [Empty bundle - patient not found]
+ODA_WEB_UI -> ODA_FHIR_API: POST [oda-fhir-base]/CarePlan/[id]/$refresh-status
+ODA_FHIR_API -> ODA_PHR: GET [oda-phr-base]/Observation?code=http://loinc.org|85354-9&patient=1&date>=2018-01-01&date<=2018-01-21
+ODA_FHIR_API <- ODA_PHR: HTTP 200 OK [Bundle of Observations for whole follow-up]
+group Case: (Four days with 2 Observations) OR (time period exceeded) 
+ODA_FHIR_API <- ODA_FHIR_API: CarePlan.activity.detail.status = completed
+end
+group Case: CarePlan.activity.detail.status = not-started AND number of Observations > 0
+ODA_FHIR_API <- ODA_FHIR_API: CarePlan.activity.detail.status = in-progress
+end
+ODA_FHIR_API -> ODA_PHR: PUT [oda-phr-base]/CarePlan/[id]/
+ODA_FHIR_API <- ODA_PHR: HTTP 200 OK
 
-ODA_WEB_UI -> ODA_WEB_UI: Accept terms and conditions
 
+ODA_WEB_UI <-- ODA_FHIR_API: HTTP 200 OK [Bundle with CarePlan and blood pressure Observations of current day]
 
-ODA_WEB_UI -> ODA_FHIR_API: POST [oda-fhir-base]/Patient/$createaccount
+group Case: (Follow-up not complete) AND (number of current day observations < 2) 
+ODA_WEB_UI -> ODA_FHIR_API: POST [oda-phr-base]/Observation/
+ODA_WEB_UI <-- ODA_FHIR_API: HTTP 201 CREATED
 
-ODA_FHIR_API -> ODA_PHR: POST [oda-phr-base]/
-ODA_FHIR_API <-- ODA_PHR: HTTP 200 OK [Bundle with transaction results]
- 
-ODA_WEB_UI <-- ODA_FHIR_API: HTTP 200 OK [Bundle with transaction results]
+end
 
 @enduml
-
-'POST http://fhir.example.com/Patient/$everything
