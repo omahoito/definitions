@@ -48,8 +48,8 @@ ODA source code is developed on various platforms and editors. Therefore common 
 ```
 public class SomeIT {
 
-    @Rule
-    public IntegrationTestRule integrationTestRule = new IntegrationTestRule();
+    @ClassRule
+    public static IntegrationTestRule integrationTestRule = new IntegrationTestRule();
 
     ...
 ```
