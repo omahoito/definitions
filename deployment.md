@@ -38,6 +38,10 @@ ports 443 and 80 (which redirects to 443) must be opened, as well as UPD ports
 - Jitsi Videobridge: 85.166.28.70
 - X-Road Security Server: 185.166.28.69
 
+*production environment:*
+- API Gateway: TBD
+- X-Road Security Server: TBD
+
 ### Connections from ODA to local services
 
 Source IP for development/pilot prototype/alpha environment is 185.166.28.68.
@@ -49,8 +53,11 @@ Source IP for production environment is to be decided.
 ODA ESB will connect to local appointment booking service. Connections to other
 EHR APIs might be required in the future. 
 
-In the future ODA identity provider module might connect to local minimum 
-context server.
+ODA Context Server module connects to local minimum context server.
+
+Outgoing connections to standard ports 80 and 443 are allowed by default.
+Connections to non-standard ports (eg. 8443) require firewall configuration
+on ODAs end.
 
 ### Connections from ODA to Internet
 
@@ -61,10 +68,6 @@ Docker images are downloaded from Docker Hub. All these connections use HTTPS
 or HTTP protocol.
 
 ODA will also require access to [MIKES] NTP servers. 
-
-Notably, ODA will not connect to SMTP servers.
-
-Details are to be discussed if outgoing connections are restricted. 
 
 ![](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/omahoito/definitions/master/deployment.plantuml?4)
 
