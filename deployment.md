@@ -29,20 +29,20 @@ If connections from end user LAN are restricted, access to ODA API Gateway
 ports 443 and 80 (which redirects to 443) must be opened, as well as UPD ports
 10000-20000 for video conferencing. 
 
-*development & proto environment:*
+*development/proto/alpha environment:*
 - API Gateway: 185.166.28.130
 - X-Road Security Server: 185.166.28.131
 
-*alpha/beta environment:*
+*beta environment:*
 - API Gateway: 185.166.28.127
 - Jitsi Videobridge: 85.166.28.70
 - X-Road Security Server: 185.166.28.69
 
 ### Connections from ODA to local services
 
-Source IP for development/pilot prototype environment is 185.166.28.68.
+Source IP for development/pilot prototype/alpha environment is 185.166.28.68.
 
-Source IP for alpha/beta environment is 185.166.28.133.
+Source IP for beta environment is 185.166.28.133.
 
 Source IP for production environment is to be decided.
 
