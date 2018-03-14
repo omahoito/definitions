@@ -89,21 +89,33 @@ public class SomeIT {
 - Others `./build.sh`
 
 ## Version control / Git & code review
+
+### General guidelines
+
 - Develop in master branch
 - Keep your local master up-to-date
 - Amend / squash commits that add to another commit (for example, fixes)
 - Push small, complete changes as often as possible
-- When ready to push:
-  1. Tiny one commit change?
-    - Have someone review the change before pushing or push the change and have someone review the specific commit
-  2. Larger than tiny or multiple commit change?
-    1. Rebase all changes from master so that your commits are on top
-    2. Create feature-branch that includes all your commits and push
-    3. Create pull-request and share the pull request to review the change
-    4. Merge to master immediately or at least within few hours
 
 See [Release methodology](release-methodology.md)
 
+### When ready to push
+
+1. Tiny one commit change?
+   - Have someone review the change before pushing or push the change and have someone review the specific commit
+2. Larger than tiny or multiple commit change?
+   1. Rebase all changes from master so that your commits are on top
+   2. Create feature-branch that includes all your commits and push
+   3. Create pull-request and share the pull request to review the change
+   4. Merge to master immediately or at least within few hours
+
+### About commits
+
+We follow 50/72 rule: the first line of commit message must be maximum 50 characters long, after that a blank line, followed by description of commit with each line wrapping to 72 characters. Only the first line is mandatory. For more information: [https://medium.com/@preslavrachev/what-s-with-the-50-72-rule-8a906f61f09c](https://medium.com/@preslavrachev/what-s-with-the-50-72-rule-8a906f61f09c "Medium: What's with the 50/72 rule?")
+
+Good commit message describes **what** and **why** of the commit. Commit messages are written in present tense. Don't include irrelevant details such as project management tickets.
+
+Commits must be split into small chunks that change one thing and one thing only. Commit version patches and changes to package.json and translations separately from everything else. Always push them to master branch, never anywhere else.
 
 ## Misc
 
