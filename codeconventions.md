@@ -71,10 +71,12 @@ public class SomeIT {
 ## JavaScript
 - Use two spaces for indentation. Tabs must not be used.
 - In JavaScript we use camelCase.
-- JavaScript is standardised to and validated towards ES6.
-- JSX-content uses double quotes. Single quotes everywhere else. (ESLint rule: jsx-quotes)
-- No spaces around objects (ESLint rule: babel/object-curly-spacing)
-- Use flowtype to type-check outgoing and incoming data
+- JavaScript is standardised to and validated towards ES6. Use its features whenever possible.
+- JSX-content uses double quotes. Single quotes everywhere else.
+- No semicolons.
+- No extra spaces.
+- No extra brackets.
+- See each repositorys .eslintrc for up-to-date rules
 - Keep necessary dependencies in as few files as possible so that they can be easily swapped later if needed
 - https://github.com/ryanmcdermott/clean-code-javascript
 
