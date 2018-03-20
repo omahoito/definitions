@@ -24,3 +24,4 @@ Asiakas ottaa yhteyttää organisaationsa kirjaamoon (varmistettava kunnista)
 - Lähtökohtaisesti tietoja ei poisteta, vaan tiedot anonymisoidaan poistamalla alkuperäisen henkilön tunnisteet. Tunnisteet poistetaan personista ja sen jälkeen henkilön tietoihin ei voi enää palata
 - CarePlaneilta poistetaan ammattilaisen pääsy tietohin - carePlan ei saa palautua työjonoon mikäli henkilö (patient -> Person) on poistettu
 - Mikäli Henkilöllä on aktiivisia hoitosuunnitelmia, hoitosuunnitelmat tulee päättää henkilön omasta toimesta. Näin ollen päättyy myös hoitovelvoite omaolo -palvelussa, kyseisen hoitosuunnitelman osalta
+- Rekisteriselosteeseen lisättävä hoitosuunnitelmien päättämisen velvoite, jotta poistopyyntö voidaan suorittaa
