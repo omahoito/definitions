@@ -39,8 +39,8 @@ ports 443 and 80 (which redirects to 443) must be opened, as well as UPD ports
 - X-Road Security Server: 185.166.28.69
 
 *production environment:*
-- API Gateway: TBD
-- X-Road Security Server: TBD
+- API Gateway: 185.166.28.196
+- X-Road Security Server: 185.166.28.197
 
 ### Connections from ODA to local services
 
@@ -48,7 +48,7 @@ Source IP for development/pilot prototype/alpha environment is 185.166.28.68.
 
 Source IP for beta environment is 185.166.28.133.
 
-Source IP for production environment is to be decided.
+Source IP for production environment is 185.166.28.195.
 
 ODA ESB will connect to local appointment booking service. Connections to other
 EHR APIs might be required in the future. 
