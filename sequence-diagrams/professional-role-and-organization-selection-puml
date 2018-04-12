@@ -1,0 +1,23 @@
+@startuml
+start
+fork
+:Professional logs in;
+while (Route Requested without organization and role)
+  :Redirect to Role and Organization selection;
+  if (LocalStorage has saved values for organization and role?) then (yes)
+    :Dispatch storage values to store;
+    :Call redirect;  
+  else (no)
+    :Wait for user input for selections;
+    :Save selected values to localstorage;
+    :Dispatch selected values to storage;
+    :Call redirect;
+  endif
+endwhile
+:Redirect to requested professional url;
+fork again
+:Professional logs out;
+:Remove values from localstorage;
+end fork
+stop
+@enduml
