@@ -1,0 +1,47 @@
+@startuml
+
+component Jenkins
+component Github
+
+
+folder pilot{
+
+  folder alpha{
+    component hml_oirearvio_a
+    component oirearvio_a
+    component ma_tarkastus_a
+    component ppt_a
+    component seuranta_a
+    component suunterveys_a
+  }
+
+  folder beta {
+    component palveluarvio_b
+    component oirearvio_b
+    component ma_tarkastus_b
+    component ppt_b
+    component seuranta_b
+    component suunterveys_b
+  }
+}
+
+Jenkins <-> hml_oirearvio_a
+Jenkins <-> oirearvio_a
+Jenkins <-> ma_tarkastus_a
+Jenkins <-> ppt_a
+Jenkins <-> seuranta_a
+Jenkins <-> suunterveys_a
+
+Jenkins <-> palveluarvio_b
+Jenkins <-> oirearvio_b
+Jenkins <-> ma_tarkastus_b
+Jenkins <-down-> ppt_b
+Jenkins <-down-> seuranta_b
+Jenkins <-down-> suunterveys_b
+
+Jenkins <-up-> Github: commit information
+
+
+
+
+@enduml

@@ -1,0 +1,27 @@
+@startuml
+header
+Sequence diagram for getting latest changes in frontend and backend
+endheader
+
+participant ODA_JENKINS
+participant GITHUB
+participant ODA_SITE
+
+box "ODA 2" #LightBlue
+    participant ODA_JENKINS
+    participant ODA_SITE
+    participant GITHUB
+end box
+
+
+ODA_JENKINS -> ODA_SITE: poll for commit sha
+ODA_SITE -> ODA_JENKINS: return result
+
+== changes detected in commit sha ==
+ODA_JENKINS -> GITHUB: get date for commit sha
+GITHUB -> ODA_JENKINS:
+
+ODA_JENKINS -> GITHUB: request commit messages from previous 10 days
+GITHUB -> ODA_JENKINS:
+
+@enduml
