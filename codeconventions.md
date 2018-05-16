@@ -42,6 +42,10 @@ ODA source code is developed on various platforms and editors. Therefore common 
 - arrange test code to follow http://wiki.c2.com/?ArrangeActAssert pattern
   + NOTE: always add empty line before and after Act-section even if test does not contain Arrange or Assert section(s) (e.g. if test is expected to throw it does not need Assertions) to make clear separation with Act-section and missing sections.
   + this may not be feasible in more complex integration tests where empty lines may be needed inside sections to make tests more readable.
+- Regarding variables in tests:
+  1. If a variable is used in (almost) all tests, introduce it as an initialized final object attribute.
+  1. If a variable is used in (almost) all tests, but its initialization may cause errors or is otherwise complex, introduce it as a final object attribute and initialize it in a setup method (@Before).
+  1. If a variable is used in a specific test, introduce it as local variable within that test.
 - unit tests should be named with \*Test-suffix (e.g. SomeClassTest.java )
 - integration tests should be named with \*IT-suffix (e.g. SomeOtherClassIT.java)
 - integration tests should use IntegrationTestRule (defined in oda-service-common) to cause the test to be run only if *runIntegrationTest* environment variable is set to true. E.g.
