@@ -30,56 +30,67 @@ Further reading (in Finnish): [Arkkitehtuuriperiaatteet](arkkitehtuuriperiaattee
 Currently implemented modules are listed below. See their repositories for more
 detailed software achitecture description.
 
-![](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/omahoito/definitions/master/modules.plantuml?5) 
+![](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/omahoito/definitions/master/modules.plantuml?6) 
 <!-- To invalidate caches change the counter in the url above, i.e. modules.plantuml?13 -> modules.plantuml?14 -->
+
+#### [oda-analytics-service](https://github.com/omahoito/oda-analytics-service)
+Oda-analytics-service generates dashboard reports from ODA log data.
 
 #### [oda-backend](https://github.com/omahoito/oda-backend) 
 Backend provides static resources, API gateway and integration to Suomi.fi 
 SSO. Backend is the contact point for web browsers and handles security aspects
 such as CSRF protection.
 
+#### [oda-cds-service](https://github.com/omahoito/oda-cds-service)
+Oda-cds-service acts as a decision making service for oda-fhir-service
+regarding specific questionnaires stored in oda-phr.
+
+#### [oda-context-client](https://github.com/omahoito/oda-context-client) 
+
 #### [oda-esb](https://github.com/omahoito/oda-esb) 
 
 ODA ESB provides XML interfaces for external services via KaPa and converts
 external XML interfaces to FHIR/JSON interfaces for internal services.
+
+#### [oda-feedback-service](https://github.com/omahoito/oda-feedback-service)
 
 #### [oda-fhir-service](https://github.com/omahoito/oda-fhir-service) 
 
 FHIR Service Provides FHIR resource APIs on top of oda-phr and external systems 
 that provide FHIR APIs.
 
-#### [oda-fhir-service-common](https://github.com/omahoito/oda-fhir-service-common) 
+#### [oda-fhir-service-common](https://github.com/omahoito/oda-fhir-service-common)
 
 Java library for providing FHIR services.
+
+#### [oda-form-generator](https://github.com/omahoito/oda-form-generator) 
+
+#### [oda-gateway](https://github.com/omahoito/oda-gateway) 
+
+#### [oda-idp](https://github.com/omahoito/oda-idp)
+ODA OpenID Connect Provider for authenticating and authorizing end users.
+
 
 #### [oda-logging-service](https://github.com/omahoito/oda-logging-service) 
 Logging Service provides a centralized logging server and a client library that
 handles server communication when built into other services.
-  
+
+#### [oda-media-storage](https://github.com/omahoito/oda-media-storage)
+Provides an API to file storage. Checks authorization using oda-fhir-service.
+
+#### [oda-notification-service](https://github.com/omahoito/oda-notification-service)
+Oda-notification-service sends notifications to end users. 
+
 #### [oda-phr](https://github.com/omahoito/oda-phr) 
 Personal health record database. 
  
 #### [oda-service-common](https://github.com/omahoito/oda-service-common) 
 Shared server side Java library.
- 
+
+#### [oda-ui-common](https://github.com/omahoito/oda-ui-common) 
+
 #### [oda-web-front](https://github.com/omahoito/oda-web-front) 
 Web Browser UI that is served from oda-backend. 
-
-#### [oda-notification-service](https://github.com/omahoito/oda-notification-service)
-Oda-notification-service sends notifications to end users.
-
-#### [oda-cds-service](https://github.com/omahoito/oda-cds-service)
-Oda-cds-service acts as a decision making service for oda-fhir-service
-regarding specific questionnaires stored in oda-phr.
-
-#### [oda-analytics-service](https://github.com/omahoito/oda-analytics-service)
-Oda-analytics-service generates dashboard reports from ODA log data.
-
-#### [oda-idp](https://github.com/omahoito/oda-idp)
-ODA OpenID Connect Provider for authenticating and authorizing end users.
-
-#### [oda-media-storage](https://github.com/omahoito/oda-media-storage)
-Provides an API to file storage. Checks authorization using oda-fhir-service. 
 
 ### Information architecture
 

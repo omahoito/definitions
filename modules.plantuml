@@ -1,74 +1,134 @@
 @startuml
 !includeurl https://raw.githubusercontent.com/omahoito/rfc/master/Styles.iuml
 header
-Module diagram generated with plantuml.com to github.com/omahoito/definitions. \
-CC-BY-4.0 City of Espoo 2017. \
+Module diagram generated with plantuml.com to github.com/omahoito/definitinotification. \
+CC-BY-4.0 Sotedigi Oy 2019. \
 To change the picture, make a pull request with changes to modules.plantuml and README.md.
 endheader
 
-agent browser
-folder "ODA 2" {
-    component "oda-web-front" as owf
-    component dashboard
-    component "oda-backend" as ob
+
+actor user
+
+
+
+folder "Omaolo (ODA2)" as oda {
+    component nginx
+    component "oda-web-front" as front
+
+    component "oda-gateway" as gateway
+
+    component "oda-backend" as backend
     component "oda-idp" as idp
     component "oda-esb" as esb
-    component "oda-fhir-service" as ofs
-    component "oda-logging-service" as ols
-    component "oda-phr" as op
-    component "oda-analytics-service" as oas
-    component "oda-notification-service" as ons
-    component "oda-cds-service" as ocds
-    component "oda-media-storage" as ms
-    database "PostgreSQL" as postgres
-    database "MongoDB" as mongo
-    database Minio
 
-    browser --> owf
-    browser --> dashboard
-    browser --> ms
+    'folder "Core Services" {
+        component "oda-fhir-service" as fhir
+        component "oda-phr" as phr
+        component "oda-logging-service" as logging
+    '}
 
-    owf --> ob
-    owf --> idp
-    ob --> ofs
-    ob --> idp
-    ob --> ols
-    ofs --> op
-    ofs --> ols
-    ofs <--> esb
-    ofs --> ocds
-    ofs --> ons
-    op --> ols
-    op --> postgres
-    ols --> mongo
-    oas --> ols
-    ocds --> op
-    ons --> op
-    dashboard --> oas
-    idp --> ofs
+    component "oda-analytics-service" as analytics
+    component "oda-notification-service" as notification
+    component "oda-cds-service" as cds
+    component "oda-media-storage" as mediastorage
+    component "oda-feedback-service" as feedback
+    component "oda-conversion-service" as conversion
 
-    ms --> ofs
-    ms --> Minio
+    folder Storage {
+        database "PostgreSQL" as postgres
+        database "MongoDB" as mongo
+        database Minio
+    }
+
+    folder Libraries {
+        component "oda-ui-common" as uicommon
+        component "oda-service-common" as servicecommon
+        component "oda-fhir-service-common" as fhirservicecommon
+        component "oda-context-client"
+    }
 }
 
 folder "External systems" as ext {
-    component "Suomi.fi\ne-Identification" as eident
-    component "Suomi.fi\nData Exchange Layer\n(KaPa)" as del
-    component EHR
+    folder "Suomi.fi" {
+        component "e-Identification" as eident
+        component "Data Exchange Layer\n(KaPa)" as del
+    }
+    folder "Electronic Health Record" as EHRfolder {
+        component EHR
+        component "Minimum Context Server" as context
+    }
+    component "ControlHub dashboard" as dashboard
+
+    folder "Duodecim (ODA 1)" {
+        component "Questionnaire\ndatabase" as VKT
+        component "ODA 1 API gateway" as ODA1
+        component "EBMeDS\nDecision support system" as EBMeDS
+        ODA1 --> EBMeDS
+    }
 }
 
-idp --> eident
-esb <--> del
+
+
+analytics --> fhir
+analytics --> logging
+
+backend --> conversion : zuul
+backend --> fhir : zuul
+backend --> idp
+backend --> logging
+backend --> mediastorage : zuul
+backend --> notification : zuul
+backend --> postgres : session
+
+user --> front : browser
+user --> nginx : idp
+
+cds --> phr
+
+dashboard --> nginx : analytics
+dashboard --> nginx : feedback
+
+' esb <--> del : not in use
 esb --> EHR
 
-folder "ODA 1" {
-    component "Questionnaire\ndatabase" as VKT
-    component "ODA 1 API gateway" as ODA1
-    component "EBMeDS\nDecision support system" as EBMeDS
-    ODA1 --> EBMeDS
-}
+feedback -> phr
 
-VKT --> ob
-ofs --> ODA1
+fhir --> ODA1
+fhir --> phr
+fhir --> logging
+fhir <--> esb
+fhir --> cds
+fhir --> notification
+
+front --> nginx
+
+gateway --> backend
+gateway --> postgres : session
+
+idp --> context
+idp --> fhir
+idp --> eident
+
+logging --> mongo
+
+mediastorage --> phr
+mediastorage --> Minio
+
+nginx --> analytics
+nginx --> feedback
+nginx --> gateway
+nginx --> idp
+
+notification --> phr
+notification --> user : websocket
+
+phr --> postgres
+
+' Layout fixes
+user -[hidden]- oda
+EHR -[hidden]down- context
+eident -[hidden]-> del
+Storage -[hidden]right-> Libraries
+servicecommon -[hidden]right-> fhirservicecommon
 
 @enduml
