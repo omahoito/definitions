@@ -83,7 +83,8 @@ backend --> postgres : session
 user --> front : browser
 user --> nginx : idp
 
-cds --> phr
+cds --> postgres
+cds --> logging
 
 dashboard --> nginx : analytics
 dashboard --> nginx : feedback
