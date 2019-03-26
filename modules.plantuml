@@ -65,6 +65,9 @@ folder "External systems" as ext {
         component "EBMeDS\nDecision support system" as EBMeDS
         ODA1 --> EBMeDS
     }
+    folder "Kanta" {
+        component "Omatietovaranto" as omatietovaranto
+    }
 }
 
 
@@ -91,6 +94,7 @@ dashboard --> nginx : feedback
 
 ' esb <--> del : not in use
 esb --> EHR
+esb --> logging
 
 feedback -> phr
 
@@ -100,6 +104,7 @@ fhir --> logging
 fhir <--> esb
 fhir --> cds
 fhir --> notification
+fhir --> omatietovaranto
 
 front --> nginx
 
