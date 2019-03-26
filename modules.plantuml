@@ -5,7 +5,7 @@ Module diagram generated with plantuml.com to github.com/omahoito/definitinotifi
 CC-BY-4.0 Sotedigi Oy 2019. \
 To change the picture, make a pull request with changes to modules.plantuml and README.md.
 endheader
-
+scale 0.75
 
 actor user
 
