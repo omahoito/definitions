@@ -51,7 +51,6 @@ folder "Omaolo (ODA2)" as oda {
 folder "External systems" as ext {
     folder "Suomi.fi" {
         component "e-Identification" as eident
-        component "Data Exchange Layer\n(KaPa)" as del
     }
     folder "Electronic Health Record" as EHRfolder {
         component EHR
@@ -92,7 +91,6 @@ cds --> logging
 dashboard --> nginx : analytics
 dashboard --> nginx : feedback
 
-' esb <--> del : not in use
 esb --> EHR
 esb --> logging
 
@@ -133,7 +131,6 @@ phr --> postgres
 ' Layout fixes
 user -[hidden]- oda
 EHR -[hidden]down- context
-eident -[hidden]-> del
 Storage -[hidden]right-> Libraries
 servicecommon -[hidden]right-> fhirservicecommon
 
