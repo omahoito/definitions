@@ -18,12 +18,14 @@ Valittaessa toiminnallisuuksia, keskitytään yksinkertaisimpaan ratkaisuvaihtoe
 
 ## Käyttäjäkeskeisyys
 Pyrimme aina asettamaan kansalaisen kokeman hyödyn etusijalle sunnittelupäätöksissä.
-Lean palvelumuotoilu
+
+## Lean palvelumuotoilu
 Päätettäessä kehitettäviä toiminnallisuuksia, perustamme päätöksenteon jatkuvaan palautteen ja käyttöstatistiikan takaisinsyöttöön käyttäjiltä sovelluskehittäjille. Sovellukset rakennetaan pilotoimalla, selkeällä fokuksella aitojen konkreettisten mitattavien ongelmien ratkaisuun. Arvioimme käyttökokemuksellisten ratkaisujen menestyksen testaamalla sitä varsinaisia tunnistettuja  tarpeita vasten seuraamalla käyttäjien toimintaa piloteissa, ennemmin kuin luottaen arvioihin, spekulaatioihin tai ammattitestaajiin. Alustaa tullaan kehittämään pienissä iteraatioissa, ja toiminnallisuudet jalostuvat käyttäjätyytyväisyyttä jatkuvasti kohentaen.
 
 ## Monikielisyys
 Kaikki komponentit tulee merkitä kielikoodilla kieliversioinnin mahdollistamiseksi. Kaikki koodi ja kommentit tehdään kansainvälisellä englannilla.
-Tekninen takaisinsyöte
+
+## Tekninen takaisinsyöte
 Toteamme karkeasti konsensuksen ja alamme työstämään toimivaa koodia välittömästi. Implementaatiomme uudelleenkäyttää standardeja, milloin käytettävissä IETF/W3C/HL7 lähteistä, ja jaamme palautteen alkuperäiselle laatijalle kun tunnistamme parhaita käytäntöjä tai käyttäjätodisteluja. Rakennamme takaisinsyöttösilmukoita käyttäjien ja kehittäjien välille sekä varmistamme standardointiyhteisöjen osallisuuden ehdotustemme ratifiointiin.
 
 ## Ketterä kehitys
