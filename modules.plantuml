@@ -108,6 +108,7 @@ front --> nginx
 
 gateway --> backend
 gateway --> postgres : session
+gateway --> notification : websocket
 
 idp --> context
 idp --> fhir
