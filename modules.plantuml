@@ -95,6 +95,7 @@ dashboard --> nginx : feedback
 esb --> EHR
 esb --> logging
 esb <--> AVPH
+AVPH --> EHR
 
 feedback -> phr
 
