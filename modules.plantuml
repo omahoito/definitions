@@ -20,6 +20,7 @@ folder "Omaolo (ODA2)" as oda {
     component "oda-backend" as backend
     component "oda-idp" as idp
     component "oda-esb" as esb
+    component "AVPH" as AVPH
 
     'folder "Core Services" {
         component "oda-fhir-service" as fhir
@@ -93,6 +94,8 @@ dashboard --> nginx : feedback
 
 esb --> EHR
 esb --> logging
+esb <--> AVPH
+AVPH --> EHR
 
 feedback -> phr
 
