@@ -1,0 +1,49 @@
+@startuml
+cloud Internet as public {
+
+    database DockerHub as dockerhub
+
+    database GitLab as gl {
+
+        node "Omaolo-repository" {
+            node "Omaolo-infra"
+            node Java
+            node "JavaScript/TypeScript"
+            node "service 1"
+            node "service 2"
+        }
+
+        node "Tooling-repository" {
+            node "Infra"
+            collections Dockerfile
+        }
+
+        database "Container registry" as registry
+
+    }
+
+}
+
+package "Cygate-DEV" {
+
+    cloud "Infra swarm" as infraswarm {
+        collections "Gitlab Docker runners" as runners
+        node "SonarQube"
+    }
+
+    cloud "Docker swarm" as swarm {
+        collections "Dynamic/static OMAOLO test environments"
+    }
+    collections "swarm-hosts" as swarmhosts
+
+    swarmhosts -right- swarm : Consists of >
+    swarmhosts -down- infraswarm : Consists of >
+}
+
+
+runners ---> gl : Runs CI jobs for
+runners -left-> swarm : deploys Omaolo
+runners <--> dockerhub : Push/pull docker images
+runners --> registry : Push/pull docker images (alternative to DockerHub)
+Infra -up-> infraswarm : Deployed with ansible, infra as a code
+@enduml
