@@ -59,6 +59,10 @@ external XML interfaces to FHIR/JSON interfaces for internal services.
 FHIR Service Provides FHIR resource APIs on top of oda-phr and external systems 
 that provide FHIR APIs.
 
+#### [oda-cqrs-service](https://github.com/omahoito/oda-cqrs-service) 
+
+Provides DTO interfaces for oda-web-front using CQRS pattern.
+
 #### [oda-fhir-service-common](https://github.com/omahoito/oda-fhir-service-common)
 
 Java library for providing FHIR services.
