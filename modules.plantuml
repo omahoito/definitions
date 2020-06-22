@@ -26,6 +26,7 @@ folder "Omaolo (ODA2)" as oda {
         component "oda-fhir-service" as fhir
         component "oda-phr" as phr
         component "oda-logging-service" as logging
+        component "oda-cqrs-service" as cqrs
     '}
 
     component "oda-analytics-service" as analytics
@@ -77,6 +78,7 @@ analytics --> logging
 
 backend --> conversion : zuul
 backend --> fhir : zuul
+backend --> cqrs : zuul
 backend --> idp
 backend --> logging
 backend --> mediastorage : zuul
@@ -106,6 +108,9 @@ fhir <--> esb
 fhir --> cds
 fhir --> notification
 fhir --> omatietovaranto
+
+cqrs --> phr
+cqrs --> logging
 
 front --> nginx
 
