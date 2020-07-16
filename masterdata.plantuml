@@ -16,6 +16,7 @@ folder Kela {
     artifact eResepti
     artifact eArkisto
     artifact Kvarkki
+    artifact "Koronahaavi\nPublish Token API" as PTAPI
 
     eResepti --* Kanta
     eArkisto --* Kanta
@@ -26,7 +27,7 @@ folder ODA {
     database "oda-phr" as odaphr
     database Mediavarasto
     agent SSO
-
+    agent "ODA Covid\ncontact service" as accs
     odaphr -- SSO
 }
 
@@ -72,4 +73,6 @@ agent Mittalaitteet
 
 Mittalaitteet -- PHR
 Ajanvaraus -- EHR
+
+accs -- PTAPI
 @enduml
