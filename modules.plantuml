@@ -27,6 +27,7 @@ folder "Omaolo (ODA2)" as oda {
         component "oda-phr" as phr
         component "oda-logging-service" as logging
         component "oda-cqrs-service" as cqrs
+        component "oda-covid-contact-service" as covid
     '}
 
     component "oda-analytics-service" as analytics
@@ -69,6 +70,9 @@ folder "External systems" as ext {
     folder "Kanta" {
         component "Omatietovaranto" as omatietovaranto
     }
+    folder "Kela Koronahaavi" {
+        component "Publish Token API" as koronahaaviTokenApi
+    }
 }
 
 
@@ -84,6 +88,12 @@ backend --> logging
 backend --> mediastorage : zuul
 backend --> notification : zuul
 backend --> postgres : session
+backend --> covid: zuul
+
+covid --> phr
+covid --> koronahaaviTokenApi
+covid --> logging
+covid --> postgres
 
 user --> front : browser
 user --> nginx : idp

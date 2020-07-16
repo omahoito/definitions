@@ -96,6 +96,9 @@ Shared server side Java library.
 #### [oda-web-front](https://github.com/omahoito/oda-web-front) 
 Web Browser UI that is served from oda-backend. 
 
+#### [oda-covid-contact-service](https://github.com/omahoito/oda-covid-contact-service) 
+Implements storing and distributing contact requests from citizen to health care personel from Finnish national Covid tracking app (koronahaavi) and handles public tokens generation by professionals.
+
 ### Information architecture
 
 Information is stored primarily as FHIR resources.
