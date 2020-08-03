@@ -16,7 +16,7 @@ folder Kela {
     artifact eResepti
     artifact eArkisto
     artifact Kvarkki
-    artifact "Koronahaavi\nPublish Token API" as PTAPI
+    artifact "Koronavilkku\nPublish Token API" as PTAPI
 
     eResepti --* Kanta
     eArkisto --* Kanta
