@@ -70,8 +70,8 @@ folder "External systems" as ext {
     folder "Kanta" {
         component "Omatietovaranto" as omatietovaranto
     }
-    folder "Kela Koronahaavi" {
-        component "Publish Token API" as koronahaaviTokenApi
+    folder "Kela Koronavilkku" {
+        component "Publish Token API" as koronavilkkuTokenApi
     }
 }
 
@@ -91,9 +91,10 @@ backend --> postgres : session
 backend --> covid: zuul
 
 covid --> phr
-covid --> koronahaaviTokenApi
+covid --> koronavilkkuTokenApi
 covid --> logging
 covid --> postgres
+covid --> fhir
 
 user --> front : browser
 user --> nginx : idp

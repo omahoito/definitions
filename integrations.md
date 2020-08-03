@@ -1,6 +1,6 @@
 # Integrations
 
-![](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/omahoito/definitions/master/masterdata.plantuml?4) 
+![](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/omahoito/definitions/master/masterdata.plantuml?5) 
 <!-- This generates a picture based on masterdata.plantuml. To change the counter in the url above, i.e. masterdata.plantuml?13 -> masterdata.plantuml?14 -->
 
 | System | Description | Authentication |
@@ -8,7 +8,7 @@
 | Suomi.fi identification | SAML 2.0 SSO. https://esuomi.fi/palveluntarjoajille/tunnistaminen/ | Public key |
 | Suomi.fi e-Authorizations | Enables users to act on behalf of other persons in digital services, and authorize others to act on their behalf. https://esuomi.fi/palveluntarjoajille/asiointivaltuudet/  | X-Road or OAuth 2 |
 | Kanta | Electronic health records archive. http://www.kanta.fi/web/ammattilaisille/tietotekniikan-ja-yhteyksien-toteuttajille | OAuth 2 |
-| Kela Koronahaavi | API meant for health authorities, for creating a publish token for a diagnosis report after verifying the infection.  | Mutual TLS|
+| Kela Koronavilkku | API meant for health authorities, for creating a publish token for a diagnosis report after verifying the infection.  | Mutual TLS|
 | My kanta | http://www.kanta.fi/web/ammattilaisille/tyokalut-kehittajille | OAuth 2 or SSL client cert |
 | ODA 1 | Provides questionnaires and decision support | (firewall) |
 | Code server | National code server https://koodistopalvelu.kanta.fi/codeserver/ | Open data |
@@ -70,7 +70,7 @@ adequately shielded.
 _TBD: To what extend should the cache be protected? For example, does it have 
 to be encrypted?_
 
-### Kela Koronahaavi Publish Token API
+### Kela Koronavilkku Publish Token API
 
 In the case of Publish Token API being down, all related actions for professionals are unavailable.
 
