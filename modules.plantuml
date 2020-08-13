@@ -94,6 +94,7 @@ covid --> phr
 covid --> koronavilkkuTokenApi
 covid --> logging
 covid --> postgres
+covid --> fhir
 
 user --> front : browser
 user --> nginx : idp
