@@ -30,8 +30,8 @@ Further reading (in Finnish): [Arkkitehtuuriperiaatteet](arkkitehtuuriperiaattee
 Currently implemented modules are listed below. See their repositories for more
 detailed software achitecture description.
 
-![](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/omahoito/definitions/master/modules.plantuml?14) 
-<!-- To invalidate caches change the counter in the url above, i.e. modules.plantuml?14 -> modules.plantuml?15 -->
+![](http://www.plantuml.com/plantuml/proxy?src=https://raw.githubusercontent.com/omahoito/definitions/master/modules.plantuml?15) 
+<!-- To invalidate caches change the counter in the url above, i.e. modules.plantuml?15 -> modules.plantuml?16 -->
 
 #### [oda-analytics-service](https://github.com/omahoito/oda-analytics-service)
 Oda-analytics-service generates dashboard reports from ODA log data.
@@ -95,6 +95,9 @@ Shared server side Java library.
 
 #### [oda-web-front](https://github.com/omahoito/oda-web-front) 
 Web Browser UI that is served from oda-backend. 
+
+#### [oda-cms](https://github.com/omahoito/oda-cms)
+Content management system for ODA.
 
 #### [oda-covid-contact-service](https://github.com/omahoito/oda-covid-contact-service) 
 Implements storing and distributing contact requests from citizen to health care personel from Finnish national Covid tracking app (koronavilkku) and handles publish token generation and distribution by professionals.

@@ -14,6 +14,7 @@ actor user
 folder "Omaolo (ODA2)" as oda {
     component nginx
     component "oda-web-front" as front
+    component "oda-cms" as cms
 
     component "oda-gateway" as gateway
 
@@ -142,6 +143,7 @@ nginx --> analytics
 nginx --> feedback
 nginx --> gateway
 nginx --> idp
+ngins --> cms
 
 notification --> phr
 notification --> user : websocket
