@@ -2,53 +2,59 @@
 !includeurl https://raw.githubusercontent.com/omahoito/rfc/master/Styles.iuml
 header
 Module diagram generated with plantuml.com to github.com/omahoito/definitinotification. \
-CC-BY-4.0 Sotedigi Oy 2019. \
+CC-BY-4.0 Sotedigi Oy 2020. \
 To change the picture, make a pull request with changes to modules.plantuml and README.md.
 endheader
 scale 0.65
 
 actor user
 
-
+folder "Tools" as tools {
+    component "oda-cms" as cms
+}
 
 folder "Omaolo (ODA2)" as oda {
-    component nginx
+    'component nginx
     component "oda-web-front" as front
-    component "oda-cms" as cms
 
-    component "oda-gateway" as gateway
+    folder "Proxy" {
+        component nginx
+        component "oda-gateway" as gateway
+    }
 
-    component "oda-backend" as backend
-    component "oda-idp" as idp
-    component "oda-esb" as esb
     component "AVPH" as AVPH
 
-    'folder "Core Services" {
+    folder "Services" {
+        component "oda-backend" as backend
+        component "oda-idp" as idp
+        component "oda-esb" as esb
+
         component "oda-fhir-service" as fhir
         component "oda-phr" as phr
         component "oda-logging-service" as logging
         component "oda-cqrs-service" as cqrs
         component "oda-covid-contact-service" as covid
-    '}
 
-    component "oda-analytics-service" as analytics
-    component "oda-notification-service" as notification
-    component "oda-cds-service" as cds
-    component "oda-media-storage" as mediastorage
-    component "oda-feedback-service" as feedback
-    component "oda-conversion-service" as conversion
+        component "oda-analytics-service" as analytics
+        component "oda-notification-service" as notification
+        component "oda-cds-service" as cds
+        component "oda-media-storage" as mediastorage
+        component "oda-feedback-service" as feedback
+        component "oda-conversion-service" as conversion
+    }
 
     folder Storage {
         database "PostgreSQL" as postgres
         database "MongoDB" as mongo
+        database "Redis" as redis
         database Minio
     }
 
     folder Libraries {
-        component "oda-ui-common" as uicommon
         component "oda-service-common" as servicecommon
         component "oda-fhir-service-common" as fhirservicecommon
         component "oda-context-client"
+        component "oda-form-generator"
     }
 }
 
@@ -81,15 +87,15 @@ folder "External systems" as ext {
 analytics --> fhir
 analytics --> logging
 
-backend --> conversion : zuul
-backend --> fhir : zuul
-backend --> cqrs : zuul
-backend --> idp
-backend --> logging
-backend --> mediastorage : zuul
-backend --> notification : zuul
-backend --> postgres : session
-backend --> covid: zuul
+gateway --> conversion : cloud-gateway
+gateway --> fhir : cloud-gateway
+gateway --> cqrs : cloud-gateway
+backend --> idp : token
+backend --> logging : session and frontend log
+gateway --> mediastorage : cloud-gateway
+gateway --> notification : cloud-gateway
+backend --> redis : session
+gateway --> covid: cloud-gateway
 
 covid --> phr
 covid --> koronavilkkuTokenApi
@@ -126,9 +132,8 @@ cqrs --> logging
 
 front --> nginx
 
-gateway --> backend
-gateway --> postgres : session
-gateway --> notification : websocket
+'gateway --> backend
+gateway --> redis : session
 
 idp --> context
 idp --> fhir
@@ -143,7 +148,6 @@ nginx --> analytics
 nginx --> feedback
 nginx --> gateway
 nginx --> idp
-ngins --> cms
 
 notification --> phr
 notification --> user : websocket
