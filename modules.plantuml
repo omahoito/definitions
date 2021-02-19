@@ -90,6 +90,7 @@ analytics --> logging
 gateway --> conversion : cloud-gateway
 gateway --> fhir : cloud-gateway
 gateway --> cqrs : cloud-gateway
+gateway --> backend
 backend --> idp : token
 backend --> logging : session and frontend log
 gateway --> mediastorage : cloud-gateway
