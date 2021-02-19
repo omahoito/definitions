@@ -133,7 +133,6 @@ cqrs --> logging
 
 front --> nginx
 
-'gateway --> backend
 gateway --> redis : session
 
 idp --> context
