@@ -21,6 +21,7 @@ ODA source code is developed on various platforms and editors. Therefore common 
 ## Java
 - Use four spaces for indentation. Tabs must not be used.
 - If methods need to return empty values use `Optional` instead of nulls.
+- Use `Optional` also for parameters whose value can be missing; this makes it explicit.
 - Return empty collections instead of nulls.
 - Use assertions like `this.bar = Objects.requireNonNull(bar);` to set potentially null value. Or `org.springframework.util.Assert.*`
 - Do not add unnecessary `if (foo == null)` checks. Trust conventions!
