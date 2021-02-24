@@ -67,7 +67,7 @@ folder "External systems" as ext {
         component "Minimum Context Server" as context
     }
     component "ControlHub dashboard" as dashboard
-
+    component "Workflow management system" as workflowmanagement
     folder "Duodecim (ODA 1)" {
         component "Questionnaire\ndatabase" as VKT
         component "ODA 1 API gateway" as ODA1
@@ -151,6 +151,7 @@ nginx --> idp
 
 notification --> phr
 notification --> user : websocket
+notification --> workflowmanagement
 
 phr --> postgres
 
