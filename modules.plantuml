@@ -123,7 +123,7 @@ feedback -> phr
 fhir --> ODA1
 fhir --> phr
 fhir --> logging
-fhir <--> esb
+fhir --> esb
 fhir --> cds
 fhir --> notification
 fhir --> omatietovaranto
