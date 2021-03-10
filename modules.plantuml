@@ -2,10 +2,10 @@
 !includeurl https://raw.githubusercontent.com/omahoito/rfc/master/Styles.iuml
 header
 Module diagram generated with plantuml.com to github.com/omahoito/definitinotification. \
-CC-BY-4.0 Sotedigi Oy 2020. \
+CC-BY-4.0 Sotedigi Oy 2021. \
 To change the picture, make a pull request with changes to modules.plantuml and README.md.
 endheader
-scale 0.65
+scale 0.55
 
 actor user
 
@@ -23,6 +23,7 @@ folder "Omaolo (ODA2)" as oda {
     }
 
     component "AVPH" as AVPH
+    component "File laundry" as laundry
 
     folder "Services" {
         component "oda-backend" as backend
@@ -143,6 +144,7 @@ logging --> mongo
 
 mediastorage --> phr
 mediastorage --> Minio
+mediastorage <--> laundry
 
 nginx --> analytics
 nginx --> feedback
